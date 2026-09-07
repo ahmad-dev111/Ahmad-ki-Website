@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Web-Developer</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+
+        .header{
+            background-color:#1a1a2e;
+            color:white;
+            padding: 50px 20px;
+            text-align: center;
+        } 
+        .header h1{
+            font-size: 40;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 18px;
+            color:#00d2ff;
+        }
+        .about {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .projects {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .project-box {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        } 
+
+        .project-card {
+            background-color:white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-card a{
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .project-card h3{
+            color: #1a1a2e;
+        }
+
+        .contact {
+            color: #00d2ff;
+        }
+
+        @media(max-width:600px){
+            .project-box{
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Ahmad</h1>
+        <p>Web-Developer</p>
+    </div>
+
+    <div class="about">
+        <h2>About Me</h2>
+        <p>Mein aik Web-Developer ho.Mujhe HTML,CSS aur Javascript ati hy.</p>
+        <p>Mein ny calculator aur to do projects banaye hai.</p>
+    </div>
+
+    <div class="projeccts">
+        <h2>My Projects</h2>
+        <div class="project-box">
+            <div class="project-card">
+                <h3>calculator</h3>
+                <p>Javascript sy bna calculator</p>
+                <a href="https://ahmad-dev111.github.io/Ahmad-ki-Website/" target="_blank">View Project</a>
+            </div>
+
+            <div class="project-card">
+                <h3>To Do List</h3>
+                <p>Local storage ky sath task manager</p>
+                <a href="https://ahmad-dev111.github.io/Ahmad-ki-Website/" target="_blank">View Project</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h2>contact Me</h2>
+        <p>Email:<a href="mailto:ahmad@email.com">ahmad@email.com</a></p>
+        <p>Github: <a href="https://github.com/ahmad-dev111" target="_blank">github.com/ahmad-dev111</a></p>
+    </div>
+    
+</body>
+</html>

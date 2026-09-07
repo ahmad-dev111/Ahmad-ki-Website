@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad ki Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: lightblue;
+        }
+        
+        .header {
+            background-color: darkblue;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .main {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .box1, .box2 {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: blue;
+        }
+        
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+        
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        @media (max-width: 600px) {
+            .main {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Meri Website</h1>
+        <p>Welcome to my professional website</p>
+    </div>
+    
+    <div class="main">
+        <div class="box1">
+            <h2>Mera Calculator</h2>
+            <input type="number" id="num1" placeholder="Pehla number">
+            <br>
+            <input type="number" id="num2" placeholder="Dusra number">
+            <br>
+            <button onclick="calcAdd()">+</button>
+            <button onclick="calcSub()">-</button>
+            <button onclick="calcMul()">×</button>
+            <button onclick="calcDiv()">÷</button>
+            <h3 id="calcResult" style="color: darkblue;"></h3>
+        </div>
+        
+        <div class="box2">
+            <h2>Meri To-Do List</h2>
+            <input type="text" id="taskInput" placeholder="Naya kaam likho...">
+            <button onclick="addTask()">Add Karo</button>
+            <ul id="taskList" style="list-style: none; padding: 0;"></ul>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Meri Website. All rights reserved.</p>
+    </div>
+    
+    <script>
+        // Calculator Functions
+        function calcAdd() {
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            document.getElementById("calcResult").innerHTML = "Result: " + (parseInt(a) + parseInt(b));
+        }
+        
+        function calcSub() {
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            document.getElementById("calcResult").innerHTML = "Result: " + (parseInt(a) - parseInt(b));
+        }
+        
+        function calcMul() {
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            document.getElementById("calcResult").innerHTML = "Result: " + (parseInt(a) * parseInt(b));
+        }
+        
+        function calcDiv() {
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            document.getElementById("calcResult").innerHTML = "Result: " + (parseInt(a) / parseInt(b));
+        }
+        
+        // To-Do List Functions with localStorage
+        function addTask() {
+            var task = document.getElementById("taskInput").value;
+            
+            if (task == "") {
+                alert("Pehle kuch likho!");
+                return;
+            }
+            
+            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.push(task);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            
+            displayTasks();
+            document.getElementById("taskInput").value = "";
+        }
+        
+        function displayTasks() {
+            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            var taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";
+            
+            for (var i = 0; i < tasks.length; i++) {
+                var li = document.createElement("li");
+                li.innerHTML = tasks[i] + " <button onclick='deleteTask(" + i + ")' style='background-color: red; padding: 5px 10px;'>Delete</button>";
+                li.style.padding = "10px";
+                li.style.background = "lightyellow";
+                li.style.margin = "5px";
+                li.style.borderRadius = "5px";
+                
+                taskList.appendChild(li);
+            }
+        }
+        
+        function deleteTask(index) {
+            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.splice(index, 1);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            displayTasks();
+        }
+        
+        // Page load hote hi tasks dikhao
+        displayTasks();
+    </script>
+</body>
+</html>
